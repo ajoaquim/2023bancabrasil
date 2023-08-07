@@ -1,0 +1,41 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <form action="post">
+<!--antigo
+<TEXTAREA onkeydown=contador() onkeyup=contador() name=texto></TEXTAREA>
+-->
+<!--[update] novo - sugestão no comments - Dicas de Excel-->
+<TEXTAREA onkeydown="contador(event);" onkeyup="contador(event);" name=texto></TEXTAREA>
+
+
+  </form>  
+
+  <script>
+
+      function contador(evt){
+    //tratamento event p/ diversos browsers
+    evt = evt || window.event;
+    var targ = evt.target || evt.srcElement;
+    if (targ.nodeType == 3) // defeat Safari bug
+    targ = targ.parentNode
+    //##end event
+             
+    //antigo codigo
+    //document.forms[0].caracteres.value=document.forms[0].texto.value.length
+                 
+    //[update] novo - sugestão no comments - Dicas de Excel
+    //agora está generico. ser houver mais de um textarea, o js atende.
+    document.forms[0].caracteres.value=targ.value.caracteres
+}
+  </script>
+</body>
+</html>
